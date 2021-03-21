@@ -127,10 +127,11 @@ function App() {
   };
 
   const onFailure = (res: any) => {
-    notification.error({
-      message: "Google auth error",
-      description: `${res}`,
-    });
+    console.error(res);
+    // notification.error({
+    //   message: "Google auth error",
+    //   description: `${res}`,
+    // });
   };
   return (
     <Router>
@@ -160,11 +161,12 @@ function App() {
         <AppFooter />
 
         <Modal
-          title="Sign in options"
+          title="You must sign in before purchase"
           visible={isModalVisible}
           onOk={handleOk}
           onCancel={handleCancel}
         >
+          <p>Sign in options</p>
           {googleUser ? (
             <GoogleLogout
               clientId={CLIENT_ID}
