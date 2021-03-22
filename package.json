@@ -1,6 +1,7 @@
 {
   "name": "wavy-nft",
   "version": "0.1.0",
+  "homepage": "https://stefanbatalka.github.io/wavy",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
@@ -11,6 +12,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
     "antd": "^4.14.0",
+    "gh-pages": "^3.1.0",
     "opensea-js": "^1.1.11",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -26,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
