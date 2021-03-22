@@ -9,6 +9,10 @@ const Root = styled.div`
     font-family: "Abril Fatface", cursive;
     font-size: 45px;
     margin: 0;
+    color: #292633;
+  }
+  h2 {
+    color: #292633;
   }
 `;
 
@@ -34,6 +38,7 @@ const HeroBackground = styled.div`
 const HeroContent = styled.div`
   padding-top: 90px;
   padding-bottom: 70px;
+  padding-left: 20px;
   max-width: 960px;
   margin: 0 auto;
 `;
@@ -46,6 +51,7 @@ const CardContainer = styled.div`
   margin-top: -150px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 interface Props {

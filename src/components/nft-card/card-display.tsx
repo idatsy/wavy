@@ -32,8 +32,13 @@ const Contract = styled.div`
 interface Props {
   cardInfo: OpenSeaAsset;
   handleClick: () => void;
+  buttonIsLoading: boolean;
 }
-export const CardDisplay: React.FC<Props> = ({ cardInfo, handleClick }) => {
+export const CardDisplay: React.FC<Props> = ({
+  cardInfo,
+  handleClick,
+  buttonIsLoading,
+}) => {
   const { imageUrl, name, assetContract, orders } = cardInfo;
   return (
     <Root>
@@ -44,11 +49,7 @@ export const CardDisplay: React.FC<Props> = ({ cardInfo, handleClick }) => {
         <Name>{name}</Name>
         <Contract> {assetContract.name}</Contract>
 
-        <Button
-          onClick={handleClick}
-          type="primary"
-          //   block={true}
-        >
+        <Button onClick={handleClick} type="primary" loading={buttonIsLoading}>
           Buy for Ξ {orders && (orders[0].basePrice.c as any) / 10000}
         </Button>
       </InfoContainer>

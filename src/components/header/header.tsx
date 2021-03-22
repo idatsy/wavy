@@ -11,11 +11,11 @@ const HeaderContents = styled.div`
 
 const Logo = styled.div`
   font-family: "Abril Fatface", cursive;
-  width: 200px;
   text-align: center;
   margin-left: 30px;
   font-size: 24px;
   padding-top: 5px;
+  color: #292633;
 `;
 
 interface Props {

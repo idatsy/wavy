@@ -153,7 +153,7 @@ function App() {
               showModal={showModal}
               loggedIn={googleUser !== null}
               nftList={SHOWCASE_NFTS}
-              title={"Hero title lorem"}
+              title={"Hero title"}
               subtitle={"Subtitle dolor sit amet lorem ipsum"}
             />
           </Route>

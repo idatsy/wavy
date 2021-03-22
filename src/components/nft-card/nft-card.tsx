@@ -11,8 +11,9 @@ const Card = styled.div`
     0 10px 10px rgba(90, 90, 90, 0.1);
   background: white;
   padding: 20px;
+  margin: 20px;
   height: 400px;
-  width: 300px;
+  min-width: 280px;
   border-radius: 8px;
 
   &:hover {
@@ -45,6 +46,7 @@ export const NftCard: React.FC<Props> = ({
   accountAddress,
 }) => {
   const [cardInfo, setCardInfo] = useState<OpenSeaAsset | null>(null);
+  const [buttonIsLoading, setButtonIsLoading] = useState<boolean>(false);
   useEffect(() => {
     const fetchAsset = async () => {
       try {
@@ -56,10 +58,8 @@ export const NftCard: React.FC<Props> = ({
         setCardInfo(asset);
       } catch (e) {
         console.log(e.message);
-        if (
-          e.message === "Request was throttled. Expected available in 1 second."
-        ) {
-          // backoff and wait 1500
+        if (e.message.includes("Request was throttled")) {
+          // backoff and wait 2s
           setTimeout(fetchAsset, 2000);
         }
       }
@@ -68,8 +68,10 @@ export const NftCard: React.FC<Props> = ({
   }, [tokenAddress, tokenId]);
 
   const handleClick = async () => {
+    setButtonIsLoading(true);
     if (!loggedIn) {
       showModal();
+      setButtonIsLoading(false);
       return;
     }
 
@@ -78,6 +80,8 @@ export const NftCard: React.FC<Props> = ({
         message: "Error making offer",
         description: "No account detected. Please try refreshing your window",
       });
+      setButtonIsLoading(false);
+      return;
     }
 
     if (!cardInfo && cardInfo!.orders) {
@@ -85,6 +89,8 @@ export const NftCard: React.FC<Props> = ({
         message: "Error making offer",
         description: "Error getting card info",
       });
+      setButtonIsLoading(false);
+      return;
     }
     const price = (cardInfo!.orders![0].basePrice.c as any) / 10000;
 
@@ -103,18 +109,24 @@ export const NftCard: React.FC<Props> = ({
         message: "Order placed",
         description: offer.createdTime,
       });
+      setButtonIsLoading(false);
     } catch (e) {
       notification.error({
         message: "Error making offer",
         description: e.message,
       });
+      setButtonIsLoading(false);
     }
   };
 
   return (
     <Card>
       {cardInfo ? (
-        <CardDisplay handleClick={handleClick} cardInfo={cardInfo} />
+        <CardDisplay
+          handleClick={handleClick}
+          cardInfo={cardInfo}
+          buttonIsLoading={buttonIsLoading}
+        />
       ) : (
         <Loading>
           <LoadingOutlined style={{ fontSize: 24 }} spin />

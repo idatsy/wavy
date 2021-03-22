@@ -6,8 +6,7 @@ const Root = styled.div`
   background: #f6f6f6;
 `;
 const FooterContent = styled.div`
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding: 20px;
   max-width: 960px;
   margin: 0 auto;
   display: flex;
