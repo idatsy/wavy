@@ -102,6 +102,10 @@ function App() {
     setIsModalVisible(true);
   };
 
+  const hideModal = () => {
+    setIsModalVisible(true);
+  };
+
   const handleOk = () => {
     setIsModalVisible(false);
   };
@@ -119,11 +123,13 @@ function App() {
     }
     const response = res as GoogleLoginResponse;
     setGoogleUser(response);
+    hideModal();
   };
   const onLogoutSuccess = () => {
     notification.info({
       message: "Logged out",
     });
+    hideModal();
   };
 
   const onFailure = (res: any) => {

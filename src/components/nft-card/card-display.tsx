@@ -39,11 +39,13 @@ export const CardDisplay: React.FC<Props> = ({
   handleClick,
   buttonIsLoading,
 }) => {
-  const { imageUrl, name, assetContract, orders } = cardInfo;
+  const { imageUrl, name, assetContract, orders, imageUrlOriginal } = cardInfo;
   return (
     <Root>
       <ImageContainer>
-        <img src={imageUrl} alt={name} />
+        <a href={imageUrlOriginal} target="_blank">
+          <img src={imageUrl} alt={name} />
+        </a>
       </ImageContainer>
       <InfoContainer>
         <Name>{name}</Name>

@@ -14,6 +14,7 @@ const Card = styled.div`
   margin: 20px;
   height: 400px;
   min-width: 280px;
+  max-width: 280px;
   border-radius: 8px;
 
   &:hover {

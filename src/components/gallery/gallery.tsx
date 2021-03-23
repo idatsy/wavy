@@ -95,7 +95,7 @@ export const Gallery: React.FC<Props> = ({
             {list.map((nft, i) => {
               return (
                 <NftCard
-                  key={i}
+                  key={`${i}_${nft.tokenId}`}
                   tokenAddress={nft.tokenAddress}
                   tokenId={nft.tokenId}
                   loggedIn={loggedIn}
