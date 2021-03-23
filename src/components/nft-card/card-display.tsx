@@ -43,7 +43,7 @@ export const CardDisplay: React.FC<Props> = ({
   return (
     <Root>
       <ImageContainer>
-        <a href={imageUrlOriginal} target="_blank">
+        <a href={imageUrlOriginal} target="_blank" rel="noreferrer">
           <img src={imageUrl} alt={name} />
         </a>
       </ImageContainer>
