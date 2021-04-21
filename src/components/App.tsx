@@ -64,7 +64,7 @@ function App() {
         // Fallback to localhost; use dev console port by default...
         else {
           const provider = new Web3.providers.HttpProvider(
-            "http://mainnet.infura.io/ws/v3/b0f0d58b5f004a39a331e73519a9a0bf"
+            "https://mainnet.infura.io/v3/41df04a042dd4537909ea7cf6a2060ca"
           );
           const web3 = new Web3(provider);
           console.log("No web3 instance injected, using Local web3.");
